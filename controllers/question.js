@@ -2,8 +2,8 @@ const Question = require("../models/question");
 
 exports.createQuestion = async (req, res) => {
   try {
-    const user = req.user;
-    const { language, question, answer, difficulty, options } = req.body;
+    const { language, question, answer, difficulty, options } =
+      req.body.formData;
 
     await Question.create({ language, question, answer, difficulty, options });
 
