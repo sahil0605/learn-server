@@ -16,6 +16,26 @@ exports.createQuestion = async (req, res) => {
       message: "Internal server error",
       error,
     });
-    b;
+  }
+};
+
+exports.getQuestions = async (req, res) => {
+  try {
+    const { language, difficulty } = req.body;
+
+    const sampledQuestions = await Question.aggregate([
+      { $match: { language, difficulty } },
+      { $sample: { size: 10 } },
+    ]);
+
+    return res.status(200).json({
+      success: true,
+      questions: sampledQuestions,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal server error",
+      error,
+    });
   }
 };
