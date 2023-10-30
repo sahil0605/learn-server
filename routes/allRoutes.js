@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
-const germenModel = require("../models/Germen");
-const userModel = require("../models/User");
+const germenModel = require("../models/question");
+const userModel = require("../models/user");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 
