@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const routes = require("./routes/allRoutes");
 require("dotenv").config();
 
 const cors = require("cors");
@@ -27,6 +26,9 @@ app.use("/api/v1/question", require("./routes/question"));
 app.use("/api/v1/score", require("./routes/score"));
 app.use("/api/v1/user", require("./routes/user"));
 
-app.listen(PORT, () => {
-  console.log("server started " + PORT);
+app.listen(PORT, (err) => {
+  if (err) {
+    console.log("Error in starting the server :", err);
+  }
+  console.log(`Server is running at port ${PORT}`);
 });
