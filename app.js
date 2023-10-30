@@ -22,9 +22,9 @@ mongoose
     console.log(err);
   });
 
-app.use("/api/v1/question", require("./routes/question"));
-app.use("/api/v1/score", require("./routes/score"));
-app.use("/api/v1/user", require("./routes/user"));
+app.use("/api/question", require("./routes/question"));
+app.use("/api/score", require("./routes/score"));
+app.use("/api/user", require("./routes/user"));
 
 app.listen(PORT, (err) => {
   if (err) {

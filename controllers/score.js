@@ -24,14 +24,16 @@ exports.getScores = async (req, res) => {
     const allTest = await Score.find({
       userId: testUser._id,
       language,
-    }).populate("testUser");
+    });
 
     return res.status(200).json({
-      score: allTest,
+      scores: allTest,
     });
-  } catch {
+  } catch (error) {
+    console.error(error);
     return res.status(500).json({
-      message: "Internal server Error",
+      message: "Internal server error: " + error,
+      message,
     });
   }
 };
